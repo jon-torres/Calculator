@@ -1,0 +1,73 @@
+:root {
+  --center-pos: center;
+  --light-gray: #d3d3d3;
+  --verylight-gray: #eee;
+  --one--em: 1em;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url('https://images.unsplash.com/photo-1502570149819-b2260483d302?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+}
+
+.calculator-grid {
+  display: grid;
+  justify-content: var(--center-pos);
+  align-content: var(--center-pos);
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  min-height: 100vh;
+
+  background-color: #ffffff10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid var(--verylight-gray);
+  outline: none;
+  background-color: rgba(211, 211, 211, 0.25);
+}
+
+.calculator-grid > button:hover {
+  background-color: var(--light-gray);
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  grid-column: 1 / -1;
+
+  background-color: rgba(0, 0, 0, 0.212);
+  padding: var(--one--em);
+  border-radius: 8px 8px 0 0;
+
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .upper-output {
+  color: var(--light-gray);
+  font-size: var(--one--em);
+}
+
+.output .main-output {
+  color: var(--verylight-gray);
+  font-size: 2em;
+}
