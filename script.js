@@ -37,6 +37,11 @@ class Calculator {
     const upper = parseFloat(this.upperOutput);
     const main = parseFloat(this.mainOutput);
     if (isNaN(upper) || isNaN(main)) return;
+    // BUG
+    // if (this.operation === '÷' && this.mainOutput === '0') {
+    //   this.mainOutput.textContent = 'ERROR';
+    //   return;
+    // }
     switch (this.operation) {
       case '+':
         computation = upper + main;
@@ -97,6 +102,7 @@ const btnDel = document.querySelector('[data-del]');
 const btnAc = document.querySelector('[data-ac]');
 const upperOutputTextEle = document.querySelector('[data-upper-output]');
 const mainOutputTextEle = document.querySelector('[data-main-output]');
+const keys = document.querySelectorAll('.key');
 
 const calculator = new Calculator(upperOutputTextEle, mainOutputTextEle);
 
@@ -128,3 +134,14 @@ btnDel.addEventListener('click', button => {
   calculator.del();
   calculator.updateCalcDisplay();
 });
+
+keys.forEach(key => {
+  key.addEventListener('keypress', () => {
+    console.log(key);
+    // key = document.querySelector(`.key[data-key="${e.key}"]`);
+    calculator.appendNum(key.innerText);
+    calculator.updateCalcDisplay();
+  });
+});
+
+// window.addEventListener('keypress',
