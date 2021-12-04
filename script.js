@@ -37,9 +37,8 @@ class Calculator {
     const upper = parseFloat(this.upperOutput);
     const main = parseFloat(this.mainOutput);
     if (isNaN(upper) || isNaN(main)) return;
-    // TODO BUG
     if (this.operation === '÷' && this.mainOutput === '0') {
-      alert("Can't divide by zero");
+      alert(`Can't divide by zero`);
       return;
     }
     switch (this.operation) {
