@@ -37,11 +37,11 @@ class Calculator {
     const upper = parseFloat(this.upperOutput);
     const main = parseFloat(this.mainOutput);
     if (isNaN(upper) || isNaN(main)) return;
-    // BUG
-    // if (this.operation === '÷' && this.mainOutput === '0') {
-    //   this.mainOutput.textContent = 'ERROR';
-    //   return;
-    // }
+    // TODO BUG
+    if (this.operation === '÷' && this.mainOutput === '0') {
+      alert('No divisions by 0');
+      return;
+    }
     switch (this.operation) {
       case '+':
         computation = upper + main;
