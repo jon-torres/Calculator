@@ -39,7 +39,7 @@ class Calculator {
     if (isNaN(upper) || isNaN(main)) return;
     // TODO BUG
     if (this.operation === '÷' && this.mainOutput === '0') {
-      alert('No divisions by 0');
+      alert("Can't divide by zero");
       return;
     }
     switch (this.operation) {
