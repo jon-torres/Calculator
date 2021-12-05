@@ -106,14 +106,12 @@ const btnDel = document.querySelector('[data-del]');
 const btnAc = document.querySelector('[data-ac]');
 const upperOutputTextEle = document.querySelector('[data-upper-output]');
 const mainOutputTextEle = document.querySelector('[data-main-output]');
-const keys = document.querySelectorAll('.key');
 
 const calculator = new Calculator(upperOutputTextEle, mainOutputTextEle);
 
 const listenToKeyboard = function (e) {
-  let key = document.querySelector(`.key[data-key="${e.key}"]`);
+  let key = document.querySelector(`[data-key="${e.key}"]`);
   if ((e.key >= '0' && e.key <= '9') || e.key === '.') {
-    console.log(e.key);
     calculator.appendNum(key.innerText);
     calculator.updateCalcDisplay();
   }
@@ -126,12 +124,10 @@ const listenToKeyboard = function (e) {
     calculator.updateCalcDisplay();
   }
   if (e.key === 'Escape') {
-    console.log(e.key);
     calculator.clear();
     calculator.updateCalcDisplay();
   }
   if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-    console.log(e.key);
     calculator.pickAnOperation(key.innerText);
     calculator.updateCalcDisplay();
   }
