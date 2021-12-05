@@ -114,22 +114,19 @@ const listenToKeyboard = function (e) {
   if ((e.key >= '0' && e.key <= '9') || e.key === '.') {
     calculator.appendNum(key.innerText);
     calculator.updateCalcDisplay();
-  }
-  if (e.key === '=' || e.key === 'Enter') {
+  } else if (e.key === '=' || e.key === 'Enter') {
     calculator.compute();
     calculator.updateCalcDisplay();
-  }
-  if (e.key === 'Backspace') {
+  } else if (e.key === 'Backspace') {
     calculator.del();
     calculator.updateCalcDisplay();
-  }
-  if (e.key === 'Escape') {
-    calculator.clear();
-    calculator.updateCalcDisplay();
-  }
-  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+  } else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
     calculator.pickAnOperation(key.innerText);
     calculator.updateCalcDisplay();
+  } else if (e.key === 'Escape') {
+    calculator.clear();
+    calculator.updateCalcDisplay();
+    return;
   }
 };
 
