@@ -11,6 +11,6 @@ Calculator project using vanilla CSS/HTML/JS.<br>In this project I worked with j
 ## Keyboard
 
 It works with keyboard input.<br>
-Escape = All clear
-Backspace = Delete
+Escape = All clear<br>
+Backspace = Delete<br>
 Enter or "=" = Calculation
