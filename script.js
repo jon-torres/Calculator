@@ -147,17 +147,17 @@ btnOperation.forEach(button => {
   });
 });
 
-btnAc.addEventListener('click', button => {
+btnAc.addEventListener('click', () => {
   calculator.clear();
   calculator.updateCalcDisplay();
 });
 
-btnEquals.addEventListener('click', button => {
+btnEquals.addEventListener('click', () => {
   calculator.compute();
   calculator.updateCalcDisplay();
 });
 
-btnDel.addEventListener('click', button => {
+btnDel.addEventListener('click', () => {
   calculator.del();
   calculator.updateCalcDisplay();
 });
