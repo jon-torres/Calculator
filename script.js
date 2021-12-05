@@ -37,7 +37,12 @@ class Calculator {
     const upper = parseFloat(this.upperOutput);
     const main = parseFloat(this.mainOutput);
     if (isNaN(upper) || isNaN(main)) return;
-    if (this.operation === '÷' && this.mainOutput === '0') {
+    if (
+      this.operation === '÷' &&
+      (this.mainOutput === `0` ||
+        this.mainOutput === `0.` ||
+        this.mainOutput === `0.0`)
+    ) {
       alert(`Can't divide by zero`);
       return;
     }
@@ -105,6 +110,33 @@ const keys = document.querySelectorAll('.key');
 
 const calculator = new Calculator(upperOutputTextEle, mainOutputTextEle);
 
+const listenToKeyboard = function (e) {
+  let key = document.querySelector(`.key[data-key="${e.key}"]`);
+  if ((e.key >= '0' && e.key <= '9') || e.key === '.') {
+    console.log(e.key);
+    calculator.appendNum(key.innerText);
+    calculator.updateCalcDisplay();
+  }
+  if (e.key === '=' || e.key === 'Enter') {
+    calculator.compute();
+    calculator.updateCalcDisplay();
+  }
+  if (e.key === 'Backspace') {
+    calculator.del();
+    calculator.updateCalcDisplay();
+  }
+  if (e.key === 'Escape') {
+    console.log(e.key);
+    calculator.clear();
+    calculator.updateCalcDisplay();
+  }
+  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+    console.log(e.key);
+    calculator.pickAnOperation(key.innerText);
+    calculator.updateCalcDisplay();
+  }
+};
+
 btnNum.forEach(button => {
   button.addEventListener('click', () => {
     calculator.appendNum(button.innerText);
@@ -134,13 +166,4 @@ btnDel.addEventListener('click', button => {
   calculator.updateCalcDisplay();
 });
 
-keys.forEach(key => {
-  key.addEventListener('keypress', () => {
-    console.log(key);
-    // key = document.querySelector(`.key[data-key="${e.key}"]`);
-    calculator.appendNum(key.innerText);
-    calculator.updateCalcDisplay();
-  });
-});
-
-// window.addEventListener('keypress',
+window.addEventListener('keydown', listenToKeyboard);
